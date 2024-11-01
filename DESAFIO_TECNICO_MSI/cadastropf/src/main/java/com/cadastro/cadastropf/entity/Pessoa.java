@@ -14,6 +14,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.util.Set;
 
 
@@ -21,13 +22,12 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="DISC", discriminatorType=STRING, length=20)
-public class Pessoa {
+public class Pessoa implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Long idPessoa;
-    
     
     @Column(nullable = false)
     private String nome;
@@ -82,5 +82,8 @@ public class Pessoa {
         this.passwd = passwd;
     }
 
-    
+    public void addEndereco(Endereco endereco) {
+        endereco.setPessoa(this);
+        this.endereco.add(endereco);
+    }
 }

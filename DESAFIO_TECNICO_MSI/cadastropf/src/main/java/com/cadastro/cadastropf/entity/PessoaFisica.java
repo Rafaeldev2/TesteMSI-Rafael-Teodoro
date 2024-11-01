@@ -1,8 +1,11 @@
 package com.cadastro.cadastropf.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
+import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @PrimaryKeyJoinColumn(name="idPessoa")
@@ -14,15 +17,16 @@ public class PessoaFisica extends Pessoa{
     @Column(nullable = true)
     private Long telefone;
     
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(nullable = true)
-    private String DataNasc;
+    private LocalDate dataNasc;
 
     public String getCpf() {
         return cpf;
     }
 
-    public String getDataNasc() {
-        return DataNasc;
+    public LocalDate getDataNasc() {
+        return dataNasc;
     }
 
     public Long getTelefone() {
@@ -33,8 +37,12 @@ public class PessoaFisica extends Pessoa{
         this.cpf = cpf;
     }
 
-    public void setDataNasc(String DataNasc) {
-        this.DataNasc = DataNasc;
+    public void setDataNasc(LocalDate dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+    
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = LocalDate.parse(dataNasc);
     }
 
     public void setTelefone(Long telefone) {

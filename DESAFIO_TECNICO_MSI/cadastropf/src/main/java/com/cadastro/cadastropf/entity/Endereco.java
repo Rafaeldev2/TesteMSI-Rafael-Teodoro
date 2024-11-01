@@ -14,7 +14,6 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name = "endereco")
 @Entity
 public class Endereco {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)

@@ -2,8 +2,10 @@ package com.cadastro.cadastropf.service;
 
 import com.cadastro.cadastropf.entity.PessoaFisica;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,9 @@ public class ValidaPessoa {
     
     public Mensagem validarPessoas(Object pessoa){
         
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+            .create();
         String pessoaJson = gson.toJson(pessoa);
         JsonObject pessoaJS = (JsonObject) JsonParser.parseString(pessoaJson);
         if(pessoaJS.has("idPessoa")){
