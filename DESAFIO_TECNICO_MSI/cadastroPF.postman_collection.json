@@ -41,6 +41,42 @@
 				"header": []
 			},
 			"response": []
+		},
+		{
+			"name": "Atualizar Pessoa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPessoa\": 2,\r\n    \"nome\": \"Bernardo Correia Silveira\",\r\n    \"cpf\": \"12345258903\",\r\n    \"email\": \"befelix.silveira@email.com\",\r\n    \"passwd\": \"333\",\r\n    \"telefone\": 75938645688,\r\n    \"dataNasc\": \"1999-01-19\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Pessoa",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
